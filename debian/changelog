@@ -1,6 +1,7 @@
 openvswitch (2.8.90-1) unstable; urgency=medium
 
-   - Nothing yet!  Try NEWS...
+   [ Open vSwitch team ]
+   * Do not modify pre-existing /etc/default/openvswitch-switch
 
  -- Open vSwitch team <dev@openvswitch.org>  Fri, 04 Aug 2017 15:00:00 -0700
 

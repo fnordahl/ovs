@@ -301,6 +301,11 @@ route_table_parse__(struct ofpbuf *buf, size_t ofs,
         change->rd.rtm_dst_len = rtm->rtm_dst_len;
         change->rd.rtm_protocol = rtm->rtm_protocol;
         change->rd.rtn_local = rtm->rtm_type == RTN_LOCAL;
+        if (attrs[RTA_OIF] && rtnh) {
+            VLOG_DBG_RL(&rl, "unexpected RTA_OIF attribute while parsing "
+                             "nested RTA_MULTIPATH attributes");
+            goto error_out;
+        }
         if (attrs[RTA_OIF] || rtnh) {
             rta_oif = rtnh
                 ? rtnh->rtnh_ifindex : nl_attr_get_u32(attrs[RTA_OIF]);
